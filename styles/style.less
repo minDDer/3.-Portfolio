@@ -1,0 +1,275 @@
+///////////////// main colors /////////////////////////
+@backgroundColor: #f7f7f7;
+@accentColor: #f79440;
+@textColor: #474241;
+@headerSelectionColor: #a19795;
+@tabHoverLinkColor: #eee;
+@footerBackgroundColor: #605a58;
+@footerTextColor: #fff;
+@footerLocationColor: #bbb9b8;
+@footerBottomBackgroundColor: #474241;
+@footerBottomNonActiveLinksColor: #878381;
+
+///////////////// main fonts /////////////////////////
+@font-face {
+    font-family: "Rufina";
+    src: url(../fonts/Rufina/Rufina-Regular.ttf)
+}
+
+@fontRufina: "Rufina",
+serif;
+@font-face {
+    font-family: "Open Sans";
+    src: url(../fonts/Open_Sans/OpenSans-Regular.ttf)
+}
+
+@fontOpenSans: 'Open Sans',
+sans-serif;
+
+///////////////// variables /////////////////////////
+@margin_auto: 0 auto;
+
+///////////////// mixins /////////////////////////
+.navTextDecoration {
+    font: 16px @fontRufina;
+    line-height: 19px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.dispFlCenter {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+///////////////// less style /////////////////////////
+html,
+body {
+    margin: 0;
+    padding: 20px 0;
+    height: 100%;
+    background-color: @backgroundColor;
+}
+
+#container {
+    min-height: 100%;
+    margin: @margin_auto;
+}
+
+#header {
+    min-width: 750px;
+    height: 160px;
+    background: url(../images/headerShadow.png) no-repeat bottom;
+    >a { //////////////////////////// logo
+        display: block;
+        margin: 0 auto;
+        width: 71px;
+        height: 71px;
+        background: url(../images/mainLogo.png);
+    }
+    nav {
+        margin: 30px 0 40px 0;
+        min-width: 750px;
+        height: 40px;
+        .dispFlCenter;
+        a { ////////////////////// menu links            
+            color: @headerSelectionColor;
+            .navTextDecoration;
+            font-weight: 400;
+        }
+        a:hover {
+            background-color: @tabHoverLinkColor;
+        }
+        .active a {
+            color: @textColor;
+            .navTextDecoration;
+            font-weight: 700;
+            background-color: transparent;
+            border-bottom: 3px solid @headerSelectionColor;
+        }
+    }
+}
+
+#main {
+    p {
+       padding: 50px; 
+    }
+    
+    .detailedNavigation {
+        min-width: 750px;
+        margin: 50px auto;
+        .dispFlCenter;
+        a {
+            .navTextDecoration;
+            color: @textColor;
+        }
+        .active a {
+            color: white;
+            background-color: @headerSelectionColor;
+        }
+    }
+    #sectionAll {
+        min-width: 750px;
+        width: 80%;
+        margin: @margin_auto;
+        a {
+            background-color: @backgroundColor;
+            border: none;
+        }
+        
+        img {
+            padding: 10px;
+            border: 1px solid transparent;
+            opacity: 0.4;
+            transition-duration: 5s;
+        }
+        
+        #specialImage {
+            overflow: hidden;
+        }
+        
+        span {
+            position: absolute;
+            
+            left: -500px;
+            top: 30px;
+            width: calc(100% - 15px);
+            
+            padding-left: 10px;
+            font: bold 50px @fontRufina;
+            color: @accentColor;
+            
+            background: rgba(255,255,255,0.7);
+            opacity: 0;
+            
+            transition-duration: 0.5s;
+        }
+        
+        img:hover {
+            z-index: 100;
+            border: 1px solid @accentColor;
+            background-color: lighten(@accentColor, 30%);
+            opacity: 1;
+            transition-duration: 0.05s;
+        }
+        
+        #specialImage:hover span {
+            left: 50px;
+            opacity: 1;
+            
+            transition-duration: 0.1s;
+        }
+    }
+}
+
+/* clearing box for the footer */
+.clr {
+    height: 450px;
+}
+
+#footer {
+    margin-top: -375px;
+    
+    .topPart {
+        background-color: @footerBackgroundColor;
+        #footerLeft {
+            position: relative;
+            img {
+                margin: 40px 40px 20px 40px;
+                float: left;
+                width: 150px;
+                height: 150px;
+            }
+            .name {
+                margin-top: 40px;
+                font: 30px @fontRufina;
+                color: @tabHoverLinkColor;
+            }
+            .location {
+                font: 16px @fontRufina;
+                color: @footerLocationColor;
+                i {
+                    margin-right: 10px;
+                }
+            }
+            .socialNetworks {
+                margin: 20px 0 40px 0;
+            }
+            .socialNetworks a {
+                padding: 10px 17px;
+                margin: 5px;
+                font: 30px @fontRufina;
+                color: @footerBottomNonActiveLinksColor;
+                background-color: @footerBottomBackgroundColor;
+                border-radius: 100%;
+            }
+            .socialNetworks a:hover {
+                background-color: @accentColor;
+            }
+            .about {
+                margin: 50px 0;
+                clear: left;
+                font: 16px @fontRufina;
+                color: @footerLocationColor;
+                text-align: justify;
+            }
+        }
+        #footerRight {            
+            .name {
+                margin-top: 40px;
+                font: 30px @fontRufina;
+                color: @tabHoverLinkColor;
+            }
+            
+            ul {
+                padding-left: 0;
+            }
+            
+            ul li a {
+                display: block;
+                text-decoration: none;
+                
+                font: 18px @fontRufina;
+                color: @footerLocationColor;
+            }
+            
+            ul li a:hover {
+                background-color: @accentColor;
+            }
+            
+            ul li {
+                list-style: none;
+            }
+        }
+    }
+    .bottomPart {
+        padding: 20px 0;
+        background-color: @footerBottomBackgroundColor;
+        color: @footerBottomNonActiveLinksColor;
+        font: 16px @fontRufina;
+        nav {
+            ul li a {
+                color: @footerBottomNonActiveLinksColor;
+                text-transform: uppercase;
+            }
+            .active a {
+                font-weight: 900;
+                color: @footerTextColor;
+                background-color: transparent;
+                border-bottom: 3px solid @footerBottomNonActiveLinksColor;
+            }
+            ul li a:hover {
+                background-color: @footerBackgroundColor;
+            }
+        }
+        span {
+            line-height: 50px;
+        }
+    }
+}
